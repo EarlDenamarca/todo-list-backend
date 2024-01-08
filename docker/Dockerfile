@@ -11,8 +11,6 @@ RUN php composer-setup.php
 RUN php -r "unlink('composer-setup.php');"
 RUN mv composer.phar /usr/local/bin/composer
 
-RUN curl -fsSL https://deb.nodesource.com/setup_20.x | bash - &&apt-get install -y nodejs
-
 WORKDIR /var/www/html
 
 ENTRYPOINT [ "docker/entrypoint.sh" ]
