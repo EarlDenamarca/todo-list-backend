@@ -17,8 +17,13 @@ class TodoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index( Request $request )
     {
+        if ( $request->has( 'is_done' ) ) {
+            $tasks = $this->todo_service->fetchTasksByIsDone( $request->is_done );
+            return response()->json( $tasks , 200 );
+        }
+
         return response()->json( $this->todo_service->all(), 200 );
     }
 

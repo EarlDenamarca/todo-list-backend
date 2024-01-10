@@ -37,4 +37,9 @@ class TodoService
         $todo = $this->find( $id );
         $todo->delete();
     }
+
+    public function fetchTasksByIsDone( Bool $is_done ) : \Illuminate\Database\Eloquent\Collection
+    {
+        return Todo::where( 'is_done', $is_done )->get();
+    }
 }
