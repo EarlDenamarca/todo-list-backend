@@ -38,6 +38,16 @@ class TodoService
         $todo->delete();
     }
 
+    public function deleteTasks() : Void
+    {
+        Todo::truncate();
+    }
+
+    public function deleteDoneTasks() : Void
+    {
+        Todo::where( 'is_done', true )->delete();
+    }
+
     public function fetchTasksByIsDone( Bool $is_done ) : \Illuminate\Database\Eloquent\Collection
     {
         return Todo::where( 'is_done', $is_done )->get();

@@ -64,4 +64,24 @@ class TodoController extends Controller
 
         return response()->json( [], 201 );
     }
+
+    /**
+     * Remove all the Tasks
+     */
+    public function deleteTasks()
+    {
+        $this->todo_service->deleteTasks();
+
+        return response()->json( [], 201 );
+    }
+
+    /**
+     * Remove all the Tasks that are done.
+     */
+    public function deleteDoneTasks()
+    {
+        $this->todo_service->deleteDoneTasks();
+
+        return response()->json( [], 201 );
+    }
 }
