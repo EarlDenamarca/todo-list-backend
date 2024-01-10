@@ -23,9 +23,10 @@ class TodoService
         ]);
     }
 
-    public function update( Todo $todo, String $todo_update ) : ?Todo
+    public function update( Todo $todo, ?String $todo_update, Bool $is_done ) : ?Todo
     {
-        $todo->todo = $todo_update;
+        $todo->todo     = $todo_update ? $todo_update : $todo->todo;
+        $todo->is_done  = $is_done;
         $todo->save();
 
         return $todo;

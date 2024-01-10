@@ -45,7 +45,7 @@ class TodoController extends Controller
             ], 404 );
         }
         
-        $todo = $this->todo_service->update( $todo, $request->todo_update );
+        $todo = $this->todo_service->update( $todo, null, $request->is_done );
 
         return response()->json( $todo, 200 );
     }
